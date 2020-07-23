@@ -1,0 +1,42 @@
+<h1>Create Your Project</h1>
+
+<%= form_for @project do |f| %>
+    <h3>Project Field</h3>
+    <div>
+    <%= f.label 'Name:' %>
+    <%= f.text_field :name %>
+    </div><br>
+    <div>
+    <%= f.label 'Description:' %><br>
+    <%= f.text_area :description %>
+    </div><br>
+    <div>
+    <%= f.label 'Start Date:' %>
+    <%= f.date_field :start_date %>
+    </div><br>
+
+    <%= f.fields_for :addresses do |address_fields| %>
+        <div>
+        <%= address_fields.label 'Street:' %>
+        <%= address_fields.text_field :street %>
+        </div><br>
+        <div>
+        <%= address_fields.label 'Line 2:' %>
+        <%= address_fields.text_field :line_2 %>
+        </div><br>
+        <div>
+        <%= address_fields.label 'City:' %>
+        <%= address_fields.text_field :city %>
+        </div><br>
+        <div>
+        <%= address_fields.label 'State:' %>
+        <%= address_fields.text_field :state %>
+        </div><br>
+        <div>
+        <%= address_fields.label 'Zip Code:' %>
+        <%= address_fields.text_field :zipcode %>
+        </div><br>
+    <% end %>
+
+    <%= f.submit 'Create Project'%>
+<% end %>
