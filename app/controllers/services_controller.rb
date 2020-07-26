@@ -31,7 +31,6 @@ class ServicesController < ApplicationController
 
     def update
         @service = Service.find(params[:id])
-        @service.proudcts.destroy_all
         @service.update_attributes(service_params)
         redirect_to service_path(@service)
     end

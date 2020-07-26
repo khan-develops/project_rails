@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
     def project_params
         params.require(:project).permit(
             :name, :description, :start_date, :user_id, service_ids:[],
-            addresses_attributes: [:street, :line_2, :city, :state, :zipcode])
+            addresses_attributes: [:id, :street, :line_2, :city, :state, :zipcode])
     end
 
 end

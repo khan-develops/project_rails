@@ -3,8 +3,10 @@
 <h2>Proudcts needed to complete the service:</h2>
 <ul>
     <% @service.products.each do |proudct| %>
-        <h2><li><%= proudct.name %></li><h2>
+        <% if !proudct.name.empty? %>
+            <h2><li><%= proudct.name %></li><h2>
         <% end %>
+    <% end %>
 </ul>
 
 <%= button_to "Delete Service", service_path(@service), method: :delete %><br>
