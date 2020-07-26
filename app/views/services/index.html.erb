@@ -1,0 +1,13 @@
+<h1>Services our company provide:</h1>
+<h2>
+<ul>
+    <% if !@services.empty? %>
+        <% @services.each do |service| %>
+            <li><%= link_to service.name, service_path(service) %></li>
+        <% end %>
+    <% else %>
+            There is no service created!
+            <%= button_to 'Create Service Here', new_service_path, method: 'get' %>
+    <% end %>
+</ul>
+</h2>

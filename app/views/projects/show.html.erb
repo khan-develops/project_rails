@@ -1,9 +1,18 @@
-This is project show page
+<h1>Project Name: <%= @project.name %></h1>
+<h1>Project Description: <%= @project.description %></h1>
+<h2>Project Start Date: <%= @project.start_date %></h2>
+<h2>Project Address: </h2>
+<ul>
+    <% @project.addresses.each do |address| %>
+        <h2><li>Street: <%= address.street %></li><h2>
+        <% if !address.line_2.empty? %>
+            <h2><li>Line 2: <%= address.line_2 %></li><h2>
+        <% end %>
+        <h2><li>City: <%= address.city %></li><h2>
+        <h2><li>State: <%= address.state %></li><h2>
+        <h2><li>Zip Code <%= address.zipcode %></li><h2>
+        <% end %>
+</ul>
 
-<% Address.all.each do |address| %>
-        <%= address.state %>
-    <% end %>
-
-<% Project.all.each do |project| %>
-        <%= project.name %>
-    <% end %>
+<%= button_to "Delete Project", project_path(@project), method: :delete %><br>
+<%= button_to "Edit Project", edit_project_path(@project), method: :get %>

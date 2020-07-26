@@ -1,0 +1,62 @@
+<%= form_for(@service) do |f| %>
+    <% if @service.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@service.errors.count, "error") %>
+                There are some errors. Please correct before proceeding!
+            </h2>
+            <ul>
+                <% @service.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+        
+    <% if User.completed.find_by(id: current_user.id).nil? %>
+        <h3>Please complete your account</h3>
+
+            <%= f.fields_for :details do |product_fields| %>
+                <div>
+                    <%= product_fields.label 'Your title: ' %>
+                    <%= product_fields.text_field :title %>
+                </div><br>
+                <div>
+                    <%= product_fields.label 'Your role: ' %>
+                    <%= product_fields.text_field :role %>
+                </div><br>
+                <div>
+                    <%= product_fields.label 'Check for completing your employee account: ' %>
+                    <%= product_fields.check_box :completed, {}, true, false %>
+                </div><br>
+                
+                <%= product_fields.hidden_field :user_id, value: current_user.id %>
+
+            <% end %>
+        <% end %>
+
+        <h3>Service Field</h3>
+        <div>
+        <%= f.label 'Service Name: ' %>
+        <%= f.text_field :name %>
+        </div><br>
+
+        <div>
+        <%= f.label 'Service Duration: ' %>
+        <%= f.select :duration, options_for_select([1,2,3,4,5,6]) %>
+        weeks to complete the service
+        </div><br>
+
+        <h3>Product(s) Field</h3>
+        <%= f.fields_for :products do |product_fields| %>
+            <div>
+                <%= product_fields.label 'Product Name: ' %>
+                <%= product_fields.text_field :name %>
+            </div><br>
+
+        <% end %>
+
+        <%= f.submit %>
+
+
+    <% end %>

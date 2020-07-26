@@ -1,0 +1,16 @@
+<%= form_tag('/session', method: 'POST') do %>
+    <div>
+    <%= label_tag 'Email: ' %>
+    <%= text_field_tag :email %>
+    </div><br>
+
+    <div>
+    <%= label_tag 'Password: ' %>
+    <%= password_field_tag :password %>
+    </div><br>
+
+    <div>
+    <%= submit_tag 'Sign In' %>
+    </div><br>
+
+<% end %>

@@ -1,6 +1,19 @@
-<h1>Create Your Project</h1>
-
 <%= form_for @project do |f| %>
+    <% if @project.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@project.errors.count, "error") %>
+                There are some errors. Please correct before proceeding!
+            </h2>
+            <ul>
+                <% @project.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <h3>Project Field</h3>
     <div>
     <%= f.label 'Name:' %>
@@ -38,5 +51,10 @@
         </div><br>
     <% end %>
 
-    <%= f.submit 'Create Project'%>
+    <div>
+    <%= f.label 'Select your service:' %>
+    <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %>
+    </div><br>
+
+    <%= f.submit %>
 <% end %>

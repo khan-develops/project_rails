@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_034845) do
+ActiveRecord::Schema.define(version: 2020_07_23_233044) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -23,12 +23,53 @@ ActiveRecord::Schema.define(version: 2020_07_23_034845) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "details", force: :cascade do |t|
+    t.string "title"
+    t.string "role"
+    t.boolean "completed", default: false
+    t.integer "user_id"
+    t.integer "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.date "start_date"
     t.boolean "started", default: false
     t.boolean "completed", default: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "service_projects", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.integer "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "name"
+    t.boolean "employee", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

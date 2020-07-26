@@ -6,6 +6,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.date :start_date
       t.boolean :started, default: false
       t.boolean :completed, default: false
+      t.integer :user_id
 
       t.timestamps
     end
