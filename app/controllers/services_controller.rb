@@ -18,21 +18,48 @@ class ServicesController < ApplicationController
     end
 
     def index
-        @services = Service.all
+        if params[:project_id]
+            @project = Project.find_by(id: params[:project_id])
+            if @project.nil?
+                redirect_to projects_path, alert: "This project is not found."
+            else
+                @services = @project.services 
+            end
+        else
+            @services = Service.all
+        end
     end
 
     def show
-        @service = Service.find(params[:id])
+        if params[:project_id]
+            @project = Project.find_by(id: params[:project_id])
+            @service = @project.services.find_by(id: params[:id])
+            if @service.nil?
+                redirect_to project_services_path, alert: "Service not found"
+            end
+        else
+            @service = Service.find(params[:id])
+        end
     end
 
     def edit
-        @service = Service.find(params[:id])
+        if params[:project_id]
+            @project = Project.find_by(id: params[:project_id])
+            if @project.nil?
+                redirect_to project_services_path, alert: 'Project not found'
+            else
+                @service = @project.services.find_by(id: params[:id])
+            end
+        else
+            @service = Service.find(params[:id])
+        end
     end
 
     def update
+        @project = Project.find_by(id: params[:project_id])
         @service = Service.find(params[:id])
         @service.update_attributes(service_params)
-        redirect_to service_path(@service)
+        redirect_to project_service_path(@project, @service)
     end
 
     def destroy

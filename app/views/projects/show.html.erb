@@ -14,5 +14,7 @@
         <% end %>
 </ul>
 
+<h3>Click <%= link_to 'here', project_services_path(@project) %> to see this project's service and products.<h3>
+
 <%= button_to "Delete Project", project_path(@project), method: :delete %><br>
 <%= button_to "Edit Project", edit_project_path(@project), method: :get %>
