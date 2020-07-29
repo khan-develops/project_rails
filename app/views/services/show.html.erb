@@ -10,4 +10,8 @@
 </ul>
 
 <%= button_to "Delete Service", service_path(@service), method: :delete %><br>
-<%= button_to "Edit Service", edit_project_service_path(@project, @service), method: :get %>
+<% if @project %>
+    <%= button_to "Edit Service", edit_project_service_path(@project, @service), method: :get %>
+<% else %>
+    <%= button_to "Edit Service", edit_service_path(@service), method: :get %>
+<% end %>

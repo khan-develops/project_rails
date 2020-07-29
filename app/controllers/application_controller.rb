@@ -3,9 +3,10 @@ class ApplicationController < ActionController::Base
 
     protect_from_forgery with: :exception
     helper_method :current_user
+    before_action :user_verified
     
     def user_verified
-        redirect_to root_path unless logged_in
+        redirect_to root_path, alert: 'Please log in' unless logged_in
     end
     
     def logged_in

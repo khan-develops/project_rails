@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+    skip_before_action :user_verified, only: [:index, :show]
+
     def new
         @service = Service.new
         @service.details.build
@@ -59,12 +61,16 @@ class ServicesController < ApplicationController
         @project = Project.find_by(id: params[:project_id])
         @service = Service.find(params[:id])
         @service.update_attributes(service_params)
-        redirect_to project_service_path(@project, @service)
+        if @project
+            redirect_to project_service_path(@project, @service)
+        else
+            redirect_to service_path(@service)
+        end
     end
 
     def destroy
         @service = Service.find(params[:id]).destroy
-        redirect_to services_path
+        redirect_to root_path
     end
 
 
