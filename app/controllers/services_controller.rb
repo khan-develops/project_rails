@@ -2,10 +2,14 @@ class ServicesController < ApplicationController
     skip_before_action :user_verified, only: [:index, :show]
 
     def new
-        @service = Service.new
-        @service.details.build
-        3.times do
-            @service.products.build
+        if current_user.employee
+            @service = Service.new
+            @service.details.build
+            3.times do
+                @service.products.build
+            end
+        else
+            redirect_to user_path(current_user), alert: "Only employees can create services"
         end
     end
 
@@ -83,6 +87,5 @@ class ServicesController < ApplicationController
             details_attributes: [:title, :role, :completed, :user_id]
         )
     end
-
 
 end

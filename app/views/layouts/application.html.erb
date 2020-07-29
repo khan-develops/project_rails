@@ -14,7 +14,11 @@
     /////////
     <%= link_to 'PROJECTS', projects_path %>
     /////////
-    <%= link_to 'SERVICES', services_path %></div>
+    <%= link_to 'SERVICES', services_path %>
+    /////////
+    <% if !current_user.nil? %>
+      <%= link_to current_user.name, user_path(current_user) %>
+    <% end %></div>
     <br>
     <% flash.each do |type, msg| %>
       <div>

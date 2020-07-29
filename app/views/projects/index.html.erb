@@ -1,13 +1,14 @@
 <h1>Projects</h1>
 <h2>
 <ul>
-    <% if !@projects.empty?%>
-        <% @projects.each do |project| %>
-            <li><%= link_to project.name , project_path(project) %></li>
+    <% projects = @projects.where(user_id: current_user.id) %>
+        <% if !projects.empty? %>
+            <% projects.each do |project| %>
+                <li><%= link_to project.name , project_path(project) %> </li>
             <% end %>
-    <% else %>
-        There is no project created.
-        <%= button_to 'Create Project', new_project_path, method: 'get' %>
-    <% end %>
+        <% else %>
+            There is no project created.
+        <% end %>
 </ul>
+<%= button_to 'Create Project', new_project_path, method: 'get' %>
 </h2>
