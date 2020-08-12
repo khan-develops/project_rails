@@ -9,9 +9,13 @@
     <% end %>
 </ul>
 
-<%= button_to "Delete Service", service_path(@service), method: :delete %><br>
-<% if @project %>
-    <%= button_to "Edit Service", edit_project_service_path(@project, @service), method: :get %>
-<% else %>
-    <%= button_to "Edit Service", edit_service_path(@service), method: :get %>
+
+<% if current_user && current_user.employee %>
+    <%= button_to "Delete Service", service_path(@service), method: :delete %><br>
+    <% if @project %>
+        <%= button_to "Edit Service", edit_project_service_path(@project, @service), method: :get %>
+    <% else %>
+        <%= button_to "Edit Service", edit_service_path(@service), method: :get %>
+    <% end %>
 <% end %>
+

@@ -3,7 +3,7 @@ class SessionController < ApplicationController
 
     def omniauth
         user = User.from_omniauth(auth)
-        if user.valid?
+        if user.save(validate: false)
             session[:user_id] = user.id
             redirect_to new_project_path
         else

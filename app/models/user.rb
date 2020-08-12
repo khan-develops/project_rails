@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
     has_secure_password
 
     def self.from_omniauth(auth)
@@ -10,9 +9,9 @@ class User < ApplicationRecord
         end
     end
 
-    validates :email, presence: true, on: :create
-    validates :name, presence: true, on: :create
-    validates :email, uniqueness: true, on: :create
+    validates :email, presence: true
+    validates :name, presence: true
+    validates :email, uniqueness: true
 
     has_many :projects
     has_many :details
