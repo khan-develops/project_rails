@@ -1,3 +1,4 @@
+<div class='left'>
 <h1>Project Name: <%= @project.name %></h1>
 <h1>Project Description: <%= @project.description %></h1>
 <h2>Project Start Date: <%= @project.start_date %></h2>
@@ -18,3 +19,4 @@
 
 <%= button_to "Delete Project", project_path(@project), method: :delete %><br>
 <%= button_to "Edit Project", edit_project_path(@project), method: :get %>
+</div>

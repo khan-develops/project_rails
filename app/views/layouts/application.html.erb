@@ -10,34 +10,46 @@
   </head>
 
   <body>
-    <div><%= link_to 'HOME', root_path %>
-    /////////
-    <%= link_to 'PROJECTS', projects_path %>
-    /////////
-    <%= link_to 'SERVICES', services_path %>
-    /////////
-    <% if !current_user.nil? %>
-      <%= link_to current_user.name, user_path(current_user) %>
-    <% end %></div>
-    <br>
-    <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %>
-      </div><br>
-    <% end %>
+    <div class="wrapper">
+      <nav class="navbar">
+          <ul>
+            <li><%= link_to 'HOME', root_path, class: 'link_to' %></li>
+            <li><%= link_to 'PROJECTS', projects_path, class: 'link_to' %></li>
+            <li><%= link_to 'SERVICES', services_path, class: 'link_to' %></li>
+            
+              <% if !current_user.nil? %>
+              <li><%= link_to current_user.name, user_path(current_user), class: 'link_to' %></li>
+              <% end %>
+            
+          </ul>
+      </nav>
+    </div>
+        <br>
+        <% flash.each do |type, msg| %>
+          <div>
+            <%= msg %>
+          </div><br>
+        <% end %>
 
-    <%= button_to "Log in with Google", '/auth/google_oauth2' %><br>
-    <%= yield %>
-    <br>
-    <% if current_user %>
-      <%= link_to 'Sign Out', signout_path %>
-    <% end %>
+      
 
-    <% if !current_user %>
-      <%= link_to 'Sign In', signin_path %>
-      <%= link_to 'Sign Up', signup_path %>
-    <% end %>
+        <%= yield %>
+        
+        <div id="footer">
+        <ul>
+          <li><%= button_to "Log in with Google", '/auth/google_oauth2', class: 'buttonTo' %></li>
+        
+        <% if current_user %>
+          <li><%= link_to 'Sign Out', signout_path, class: 'link_to' %></li>
+        <% end %>
+        <% if !current_user %>
+          <li><%= link_to 'Sign In', signin_path, class: 'link_to' %></li>
+          <li><%= link_to 'Sign Up', signup_path, class: 'link_to' %></li>
+        <% end %>
+        
+        </ul>
+        </footer>
 
-
+      
   </body>
 </html>
