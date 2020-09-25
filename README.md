@@ -1,24 +1,42 @@
-# README
+# Rails Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## Install
 
-* System dependencies
+### Clone the repository
 
-* Configuration
+```shell
+https://github.com/batsaikhan84/project_rails.git
+cd project_rails
+```
+### Install dependencies
 
-* Database creation
+Using Bundler
 
-* Database initialization
+```shell
+bundle install
+```
 
-* How to run the test suite
+### Initialize the database
+```shell
+rails db:create db:migrate db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Ruby version
+```shell
+ruby -v
+```
+Version `ruby 2.6.2`
 
-* Deployment instructions
+In order to work properly, please install the ruby version 2.6.2:
 
-* ...
+```shell
+rbenv install 2.6.2
+```
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+ 
+
