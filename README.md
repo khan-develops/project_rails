@@ -1,6 +1,6 @@
 # Rails Project
 
-This project meant for helping construction businesses to have online presence as well as to interact with their customers through the internet. The businnesses can create their services on the application for customers. Customers can choose from those services through forms. 
+This project meant for helping construction businesses to have online presence as well as to interact with their customers through the internet. The businnesses can create their services on the application for customers. Customers can choose from those services through different forms. 
 
 ## Install
 
