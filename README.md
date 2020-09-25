@@ -1,6 +1,6 @@
 # Rails Project
 
-This project is built for helping construction businesses to have online presence as well as to interact with their customers through the internet. The businesses can create their services on the application and list all the products to sell to customers. Customers can create projects by using forms provided by the application. In the project, all the services and products available to choose.  
+This project is built for helping construction businesses to have online presence as well as to interact with their customers through the internet. The businesses can create their services on the application and list all the products available to sell to customers. Customers can create projects by using forms provided by the application. In the project form, all the services and products available to choose.  
  
 
 ## Install
