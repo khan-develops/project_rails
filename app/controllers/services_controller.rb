@@ -1,6 +1,5 @@
 class ServicesController < ApplicationController
     skip_before_action :user_verified, only: [:index, :show]
-
     def new
         if current_user.employee
             @service = Service.new
@@ -12,7 +11,6 @@ class ServicesController < ApplicationController
             redirect_to user_path(current_user), alert: "Only employees can create services"
         end
     end
-
     def create
         @service = Service.new(service_params)
         if @service.valid?
@@ -22,7 +20,6 @@ class ServicesController < ApplicationController
             render :new
         end
     end
-
     def index
         if params[:project_id]
             @project = Project.find_by(id: params[:project_id])
@@ -35,7 +32,6 @@ class ServicesController < ApplicationController
             @services = Service.all
         end
     end
-
     def show
         if params[:project_id]
             @project = Project.find_by(id: params[:project_id])
@@ -47,7 +43,6 @@ class ServicesController < ApplicationController
             @service = Service.find(params[:id])
         end
     end
-
     def edit
         if params[:project_id]
             @project = Project.find_by(id: params[:project_id])
@@ -60,7 +55,6 @@ class ServicesController < ApplicationController
             @service = Service.find(params[:id])
         end
     end
-
     def update
         @project = Project.find_by(id: params[:project_id])
         @service = Service.find(params[:id])
@@ -71,15 +65,11 @@ class ServicesController < ApplicationController
             redirect_to service_path(@service)
         end
     end
-
     def destroy
         @service = Service.find(params[:id]).destroy
         redirect_to root_path
     end
-
-
     private
-
     def service_params
         params.require(:service).permit(
             :name, :duration,
@@ -87,5 +77,4 @@ class ServicesController < ApplicationController
             details_attributes: [:title, :role, :completed, :user_id]
         )
     end
-
 end

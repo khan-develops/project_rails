@@ -23,16 +23,15 @@
             
           </ul>
       </nav>
-    </div>
-        <br>
-        <% flash.each do |type, msg| %>
-          <div>
-            <%= msg %>
-          </div><br>
-        <% end %>
-
       
-
+      <% flash.each do |type, msg| %>
+        <div class='flash'>
+        <h3><%= msg %></h3>
+        </div>
+      <% end %>
+      
+    </div>
+   
         <%= yield %>
         
         <div id="footer">
@@ -48,7 +47,7 @@
         <% end %>
         
         </ul>
-        </footer>
+        </div>
 
       
   </body>

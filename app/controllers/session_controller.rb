@@ -40,6 +40,4 @@ class SessionController < ApplicationController
         request.env['omniauth.auth']
     end
 
-
-
 end

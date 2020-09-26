@@ -29,6 +29,15 @@
     width: 100%;
     background-color: #6cf;
 }
+.flash {
+    height: 40px;
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+}
+.flash h3 {
+    padding: 8px;
+    position: absolute;
+}
 .navbar ul {
     float: right;
     margin-right: 40px;

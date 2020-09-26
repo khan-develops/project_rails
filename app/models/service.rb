@@ -8,6 +8,8 @@ class Service < ApplicationRecord
     has_many :details
 
     accepts_nested_attributes_for :products, :details, allow_destroy: true
+    
+    
 
     # def products_attributes=(products_attributes)
     #     products_attributes.values.each do  |product_attributes|
