@@ -1,24 +1,43 @@
-# README
+# Rails Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is built for helping construction businesses to have online presence as well as to interact with their customers through the internet. The businesses can create their services on the application and list all the products available to sell to customers. Customers can create projects by using forms provided by the application. In the project form, all the services and products available to choose.  
+ 
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+### Clone the repository
 
-* System dependencies
+```shell
+https://github.com/batsaikhan84/project_rails.git
+cd project_rails
+```
+### Install dependencies
 
-* Configuration
+Using Bundler
 
-* Database creation
+```shell
+bundle install
+```
 
-* Database initialization
+### Initialize the database
+```shell
+rails db:create db:migrate db:seed
+```
 
-* How to run the test suite
+### Ruby version
+```shell
+ruby -v
+```
+Version `ruby 2.6.2`
 
-* Services (job queues, cache servers, search engines, etc.)
+In order for the application to work properly, please install the ruby version 2.6.2:
 
-* Deployment instructions
+```shell
+rbenv install 2.6.2
+```
 
-* ...
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+ 
+
